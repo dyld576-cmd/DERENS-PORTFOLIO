@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Dylan Marcello</title>
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #061321;
+            --panel: #10283d;
+            --cyan: #36d9f5;
+            --text: #f3f8ff;
+            --muted: #a7bfd2;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background:
+                radial-gradient(ellipse at top right, #123b59, transparent 45%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 20px 8%;
+            background: #091b2b;
+            border-bottom: 1px solid #21425a;
+        }
+
+        nav a { color: var(--muted); text-decoration: none; }
+        nav a:hover { color: var(--cyan); }
+        .logo { color: white; font-weight: bold; }
+        .logo span { color: var(--cyan); }
+        .links { display: flex; gap: 22px; flex-wrap: wrap; }
+
+        main { width: 84%; max-width: 1100px; margin: auto; }
+
+        header { padding: 65px 0 35px; }
+
+        .tag {
+            color: var(--cyan);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: .8rem;
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            line-height: 1.1;
+            margin: 15px 0;
+        }
+
+        .muted { color: var(--muted); }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #102b41, #0a1b2b);
+            border: 1px solid #21425a;
+            border-radius: 18px;
+            padding: 24px;
+            transition: .25s;
+            overflow-wrap: anywhere;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--cyan);
+        }
+
+        .card .emoji { font-size: 2rem; }
+        .card h2 { font-size: 1.2rem; margin: 10px 0 5px; }
+        .card p { color: var(--muted); }
+
+        .form-panel {
+            background: var(--panel);
+            border: 1px solid #21425a;
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 65px;
+        }
+
+        .form-panel h2 { font-size: 2rem; margin-bottom: 5px; }
+
+        form { margin-top: 25px; }
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .field { margin-bottom: 18px; }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #31546b;
+            border-radius: 10px;
+            background: #071827;
+            color: white;
+            font: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: 2px solid var(--cyan);
+            outline-offset: 2px;
+        }
+
+        textarea { min-height: 150px; resize: vertical; }
+
+        button {
+            background: var(--cyan);
+            color: #041321;
+            border: 0;
+            padding: 13px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform .2s;
+        }
+
+        button:hover { transform: translateY(-3px); }
+
+        #status {
+            color: var(--cyan);
+            margin-top: 12px;
+        }
+
+        footer {
+            padding: 25px 8%;
+            border-top: 1px solid #21425a;
+            color: var(--muted);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        @media (max-width: 750px) {
+            nav { flex-direction: column; }
+            main { width: 90%; }
+            .cards { grid-template-columns: 1fr; }
+            .row { grid-template-columns: 1fr; gap: 0; }
+            .form-panel { padding: 22px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a class="logo" href="index.html">DYLAN<span>.</span></a>
+        <div class="links">
+            <a href="index.html">Home</a>
+            <a href="fun.html">Fun Facts</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <main>
+        <header>
+            <p class="tag">Let's connect</p>
+            <h1>Contact <span style="color:var(--cyan)">me.</span></h1>
+            <p class="muted">
+                Have a question, an idea, or feedback? Use the form below.
+                Please don't include private or sensitive information.
+            </p>
+        </header>
+
+        <section class="cards">
+            <article class="card">
+                <div class="emoji">✉️</div>
+                <h2>Email</h2>
+                <p>your-public-email@example.com</p>
+                <p>Replace this placeholder with a public email address if you want.</p>
+            </article>
+
+            <article class="card">
+                <div class="emoji">📍</div>
+                <h2>Location</h2>
+                <p>Jakarta, Indonesia</p>
+                <p>No home address displayed.</p>
+            </article>
+
+            <article class="card">
+                <div class="emoji">🌊</div>
+                <h2>Interests</h2>
+                <p>Ocean · Engineering · Creativity</p>
+                <p>Always curious about new ideas.</p>
+            </article>
+        </section>
+
+        <section class="form-panel">
+            <h2>Send a message</h2>
+            <p class="muted">This demo checks your form but does not send or store messages.</p>
+
+            <form id="contactForm">
+                <div class="row">
+                    <div class="field">
+                        <label for="name">Your name *</label>
+                        <input id="name" name="name" required maxlength="80" placeholder="Enter your name">
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Your email *</label>
+                        <input id="email" name="email" type="email" required maxlength="150" placeholder="you@example.com">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="subject">Subject *</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Choose a subject</option>
+                        <option>General question</option>
+                        <option>Project feedback</option>
+                        <option>Collaboration</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required minlength="10" maxlength="2000" placeholder="Write your message here..."></textarea>
+                </div>
+
+                <button type="submit">Check message ↗</button>
+                <p id="status" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <span>© <span id="year"></span> Dylan Marcello</span>
+        <span>Built with curiosity 🌊</span>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            if (!this.reportValidity()) return;
+
+            document.getElementById("status").textContent =
+                "Your form is valid! It has not been sent because no email service is connected yet.";
+        });
+    </script>
+</body>
+</html>

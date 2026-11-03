@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Facts | Dylan</title>
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #061321;
+            --panel: #10283d;
+            --cyan: #36d9f5;
+            --text: #f3f8ff;
+            --muted: #a7bfd2;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 20px 8%;
+            background: #091b2b;
+            border-bottom: 1px solid #21425a;
+        }
+
+        nav a { text-decoration: none; color: var(--muted); }
+        nav a:hover { color: var(--cyan); }
+        .logo { font-weight: bold; color: white; }
+        .logo span { color: var(--cyan); }
+        .links { display: flex; gap: 22px; flex-wrap: wrap; }
+
+        main { width: 84%; max-width: 1100px; margin: auto; }
+
+        header { padding: 65px 0 35px; }
+
+        .tag {
+            color: var(--cyan);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: .8rem;
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            line-height: 1.1;
+            margin: 15px 0;
+        }
+
+        .muted { color: var(--muted); }
+
+        .tools {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        input {
+            flex: 1;
+            min-width: 200px;
+            background: #0c2033;
+            color: white;
+            border: 1px solid #31546b;
+            border-radius: 10px;
+            padding: 13px;
+            font: inherit;
+        }
+
+        button {
+            background: var(--cyan);
+            color: #041321;
+            border: 0;
+            padding: 13px 18px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform .2s;
+        }
+
+        button:hover { transform: translateY(-3px); }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            padding-bottom: 35px;
+        }
+
+        .fact {
+            background: linear-gradient(145deg, #102b41, #0a1b2b);
+            border: 1px solid #21425a;
+            border-radius: 18px;
+            padding: 23px;
+            transition: .25s;
+            animation: fadeIn .5s ease both;
+        }
+
+        .fact:hover {
+            transform: translateY(-5px);
+            border-color: var(--cyan);
+        }
+
+        .fact .emoji { font-size: 2rem; }
+        .fact h2 { font-size: 1.25rem; margin: 12px 0 8px; }
+        .fact p { color: var(--muted); }
+        .fact[hidden] { display: none; }
+
+        .result {
+            margin: 25px 0 65px;
+            padding: 25px;
+            border: 1px solid #246078;
+            border-radius: 18px;
+            background: #0d2b40;
+        }
+
+        .result h2 { margin-bottom: 10px; }
+        .result p { color: var(--muted); margin-bottom: 15px; }
+
+        footer {
+            border-top: 1px solid #21425a;
+            padding: 25px 8%;
+            color: var(--muted);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 800px) {
+            .grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 560px) {
+            nav { flex-direction: column; }
+            .grid { grid-template-columns: 1fr; }
+            main { width: 90%; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a class="logo" href="index.html">DYLAN<span>.</span></a>
+        <div class="links">
+            <a href="index.html">Home</a>
+            <a href="fun.html">Fun Facts</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <main>
+        <header>
+            <p class="tag">Knowledge, but make it weird</p>
+            <h1>The <span style="color:var(--cyan)">Random</span><br>Fact Zone.</h1>
+            <p class="muted">Search strange facts or press the button for a random surprise.</p>
+
+            <div class="tools">
+                <input id="search" type="search" placeholder="Search facts..." aria-label="Search facts">
+                <button id="randomButton" type="button">🎲 Surprise me</button>
+            </div>
+            <p id="searchStatus" class="muted" aria-live="polite"></p>
+        </header>
+
+        <section class="grid" id="factGrid">
+            <article class="fact" data-keywords="banana fruit plant">
+                <div class="emoji">🍌</div>
+                <h2>Why are bananas curved?</h2>
+                <p>Bananas grow toward light as they develop, which helps give them their familiar curve.</p>
+            </article>
+
+            <article class="fact" data-keywords="sea otter ocean animal">
+                <div class="emoji">🦦</div>
+                <h2>Sea otter teamwork</h2>
+                <p>Sea otters sometimes hold paws or wrap themselves in kelp while resting so currents are less likely to separate them.</p>
+            </article>
+
+            <article class="fact" data-keywords="wombat animal cube">
+                <div class="emoji">🧊</div>
+                <h2>Wombat cubes</h2>
+                <p>Wombats produce cube-shaped droppings because of differences in the elasticity of their intestinal walls.</p>
+            </article>
+
+            <article class="fact" data-keywords="cat animal zoomies">
+                <div class="emoji">🐈</div>
+                <h2>The midnight zoomies</h2>
+                <p>Cats often have sudden bursts of energy, particularly around dawn and dusk.</p>
+            </article>
+
+            <article class="fact" data-keywords="paperclip history invention">
+                <div class="emoji">📎</div>
+                <h2>A tiny design classic</h2>
+                <p>The familiar paperclip holds pages together without punching holes in them.</p>
+            </article>
+
+            <article class="fact" data-keywords="cloud weather water science">
+                <div class="emoji">☁️</div>
+                <h2>How clouds float</h2>
+                <p>Clouds contain tiny water droplets or ice crystals. Air movement helps keep them suspended.</p>
+            </article>
+
+            <article class="fact" data-keywords="octopus ocean intelligence">
+                <div class="emoji">🐙</div>
+                <h2>Octopus intelligence</h2>
+                <p>A large portion of an octopus's nervous system is distributed through its arms.</p>
+            </article>
+
+            <article class="fact" data-keywords="shark ocean teeth">
+                <div class="emoji">🦈</div>
+                <h2>Sharks replace teeth</h2>
+                <p>Many sharks continually replace lost teeth throughout their lives.</p>
+            </article>
+
+            <article class="fact" data-keywords="venus space planet">
+                <div class="emoji">🪐</div>
+                <h2>Venus spins differently</h2>
+                <p>Venus rotates in the opposite direction to most planets in our Solar System.</p>
+            </article>
+        </section>
+
+        <section class="result" aria-live="polite">
+            <p class="tag">Your random pick</p>
+            <h2 id="resultTitle">Need a surprise?</h2>
+            <p id="resultText">Press “Surprise me” to pick a fact.</p>
+            <button id="copyButton" type="button">📋 Copy fact</button>
+            <p id="copyStatus" class="muted"></p>
+        </section>
+    </main>
+
+    <footer>
+        <span>© <span id="year"></span> Dylan Marcello</span>
+        <span>Stay curious 🌊</span>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        const search = document.getElementById("search");
+        const cards = [...document.querySelectorAll(".fact")];
+        const status = document.getElementById("searchStatus");
+
+        let selectedFact = null;
+
+        search.addEventListener("input", () => {
+            const query = search.value.toLowerCase().trim();
+            let count = 0;
+
+            cards.forEach(card => {
+                const matches = (card.innerText + " " + card.dataset.keywords)
+                    .toLowerCase().includes(query);
+
+                card.hidden = !matches;
+                if (matches) count++;
+            });
+
+            status.textContent = `${count} fact${count === 1 ? "" : "s"} found.`;
+        });
+
+        document.getElementById("randomButton").addEventListener("click", () => {
+            const visible = cards.filter(card => !card.hidden);
+
+            if (visible.length === 0) {
+                status.textContent = "No matching facts. Try another search.";
+                return;
+            }
+
+            selectedFact = visible[Math.floor(Math.random() * visible.length)];
+
+            document.getElementById("resultTitle").textContent =
+                selectedFact.querySelector("h2").textContent;
+
+            document.getElementById("resultText").textContent =
+                selectedFact.querySelector("p").textContent;
+
+            document.getElementById("copyStatus").textContent = "";
+        });
+
+        document.getElementById("copyButton").addEventListener("click", async () => {
+            if (!selectedFact) {
+                document.getElementById("copyStatus").textContent =
+                    "Choose a random fact first!";
+                return;
+            }
+
+            const text =
+                document.getElementById("resultTitle").textContent + "\n" +
+                document.getElementById("resultText").textContent;
+
+            try {
+                await navigator.clipboard.writeText(text);
+                document.getElementById("copyStatus").textContent = "Copied!";
+            } catch {
+                document.getElementById("copyStatus").textContent =
+                    "Copy is unavailable in this browser. Select the text and copy it manually.";
+            }
+        });
+    </script>
+</body>
+</html>

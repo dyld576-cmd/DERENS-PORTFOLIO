@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dylan Marcello | Ocean Portfolio</title>
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #061321;
+            --panel: #10283d;
+            --cyan: #36d9f5;
+            --text: #f3f8ff;
+            --muted: #a7bfd2;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: #091b2b;
+            border-bottom: 1px solid #21425a;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo { font-size: 1.3rem; font-weight: bold; }
+        .logo span, .cyan { color: var(--cyan); }
+
+        .links { display: flex; gap: 24px; }
+        .links a { color: var(--muted); transition: .2s; }
+        .links a:hover { color: var(--cyan); }
+
+        .hero {
+            min-height: 75vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 10%;
+            background:
+                radial-gradient(ellipse at 85% 20%, #087eaa55, transparent 45%),
+                linear-gradient(135deg, #061321, #0b2940);
+        }
+
+        .tag {
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: .8rem;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1.08;
+            margin: 20px 0;
+            max-width: 850px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+
+        .button {
+            display: inline-block;
+            background: var(--cyan);
+            color: #041321;
+            font-weight: bold;
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin: 25px 10px 0 0;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: transform .2s, background .2s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            background: #8af0ff;
+        }
+
+        .outline {
+            background: transparent;
+            color: var(--text);
+            border-color: #31546b;
+        }
+
+        section { padding: 65px 8%; }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 12px;
+        }
+
+        .muted { color: var(--muted); }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #102b41, #0a1b2b);
+            border: 1px solid #21425a;
+            border-radius: 18px;
+            padding: 25px;
+            transition: transform .25s, border-color .25s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--cyan);
+        }
+
+        .card .emoji { font-size: 2rem; }
+        .card h3 { margin: 15px 0 8px; }
+        .card p { color: var(--muted); margin-bottom: 15px; }
+        .card a { color: var(--cyan); font-weight: bold; }
+
+        .about {
+            background: #091b2b;
+            border-radius: 18px;
+            padding: 30px;
+            margin-top: 25px;
+        }
+
+        footer {
+            padding: 25px 8%;
+            border-top: 1px solid #21425a;
+            color: var(--muted);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .reveal {
+            animation: fadeUp .8s ease both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(22px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 750px) {
+            nav { align-items: flex-start; flex-direction: column; gap: 12px; }
+            .links { gap: 18px; flex-wrap: wrap; }
+            .cards { grid-template-columns: 1fr; }
+            .hero { min-height: 65vh; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                scroll-behavior: auto !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a class="logo" href="index.html">DYLAN<span>.</span></a>
+        <div class="links">
+            <a href="index.html">Home</a>
+            <a href="fun.html">Fun Facts</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="tag reveal">Welcome to my world</div>
+        <h1 class="reveal">Curious mind.<br><span class="cyan">Ocean-sized dreams.</span></h1>
+        <p class="reveal">
+            Hey, I'm Dylan Marcello. I love exploring ideas, learning how
+            things work, and turning creativity into something real.
+        </p>
+        <div class="reveal">
+            <a class="button" href="#explore">Explore my website ↓</a>
+            <a class="button outline" href="contact.html">Contact me ↗</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="explore">
+            <p class="tag">Explore</p>
+            <h2>What I'm interested in.</h2>
+            <p class="muted">A little bit of science, creativity, and internet chaos.</p>
+
+            <div class="cards">
+                <article class="card">
+                    <div class="emoji">🌊</div>
+                    <h3>The Ocean</h3>
+                    <p>Marine life, ocean conservation, and engineering ideas that could make a difference.</p>
+                    <a href="contact.html">Discuss an idea →</a>
+                </article>
+
+                <article class="card">
+                    <div class="emoji">🧠</div>
+                    <h3>Learning & Building</h3>
+                    <p>Exploring new skills, experimenting with code, and improving through practice.</p>
+                    <a href="contact.html">Let's connect →</a>
+                </article>
+
+                <article class="card">
+                    <div class="emoji">🎲</div>
+                    <h3>Random Facts</h3>
+                    <p>Surprising facts about animals, science, and everyday things.</p>
+                    <a href="fun.html">Enter the fun zone →</a>
+                </article>
+            </div>
+
+            <div class="about">
+                <p class="tag">A little about me</p>
+                <h2>Always learning. Always creating.</h2>
+                <p class="muted">
+                    This website is my personal digital playground. It is a place
+                    to practise coding, share interests, and turn small ideas into
+                    bigger projects. This is only the beginning.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>© <span id="year"></span> Dylan Marcello</span>
+        <span>Built with curiosity 🌊</span>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+    </script>
+</body>
+</html>
